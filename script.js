@@ -24,7 +24,7 @@ function populateQuestion(){
 function checkAnswer(){
 	$(".choices").on('click', function(){
 		var guessedName = $(this).valueOf();
-		if ($(guessedName) === targetArtist.name){
+		if (guessedName === targetArtist.name){
 			alert("Correct! On to the next art piece!")
 		}
 		else{
