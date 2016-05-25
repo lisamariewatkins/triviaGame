@@ -6,29 +6,31 @@ var triviaArray = [{
 	}
 ]
 
+var guessedName;
+
 var targetArtist = triviaArray[Math.floor(Math.random()*triviaArray.length)];
 
 //Fischer-Yates Shuffle
-function shuffleAnswers(array){
-	var i = 0
-	var j = 0
-	var temp = null
-
-	for (i = targetArtist.choices.length - 1; i > 0; i-=1){
-    j = Math.floor(Math.random() * (i + 1))
-    temp = targetArtist.choices[i]
-    targetArtist.choices[i] = targetArtist.choices[j]
-    targetArtist.choices[j] = temp
-  	}
-
-  	return temp
-}
 
 function populateQuestion(){
-	$("#instructions").html(targetArtist.title);
+	$("#instructions").html("<p id='title'>" + targetArtist.title + "</p>");
 	$("#image").html("<img class=artImage src='" + targetArtist.img + "'>");
-	var list = shuffleAnswers(targetArtist.choices);
-	$("#answerChoices").html(list);
+	for (var i = 0; i < targetArtist.choices.length; i++){
+		$("#answerChoices").append("<p class='choices'>" + targetArtist.choices[i] + "</p>")
+	}
+	
+}
+
+function checkAnswer(){
+	$(".choices").on('click', function(){
+		var guessedName = $(this).valueOf();
+		if ($(guessedName) === targetArtist.name){
+			alert("Correct! On to the next art piece!")
+		}
+		else{
+			alert("Incorrect! Try again.")
+		}
+	});
 }
 
 $(document).ready(function(){
@@ -37,6 +39,9 @@ $(document).ready(function(){
 
 	$("button").on('click', function(){
 		populateQuestion();
+		checkAnswer();
 	});
+
+	
 
 });

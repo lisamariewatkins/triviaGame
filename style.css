@@ -34,6 +34,10 @@ header{
 	text-align: center;
 }
 
+#answerChoices{
+	text-align: center;
+}
+
 .button {
    border-top: 1px solid #96d1f8;
    background: #65a9d7;
