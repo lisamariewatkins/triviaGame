@@ -50,8 +50,6 @@ function decrement(){
 function populateQuestion(){
 	targetArtist = triviaArray[Math.floor(Math.random()*triviaArray.length)];
 	artistIndex = triviaArray.indexOf(targetArtist); //the splice method called later needs two numbers, so i need to store the numerical index value of targetArtist
-	//remove artist from array to avoid duplicates
-	triviaArray.splice(artistIndex, 1);
 	//populate instructions/disply
 	$("#instructions").html("<p id='title'>" + targetArtist.title + "</p>");
 	$("#image").html("<img class=artImage src='" + targetArtist.img + "'>");
@@ -75,6 +73,7 @@ function empty(){
 function checkAnswer(){
 	$(".choices").on('click', function(){
 		var guessedName = $(this).text();
+		triviaArray.splice(artistIndex, 1); //removes artist so no duplicates
 		stop();
 		empty();
 		if (guessedName === targetArtist.name){
@@ -84,6 +83,10 @@ function checkAnswer(){
 		else{
 			$("#instructions").html("<p>Incorrect!</p><br><button class='button'>Try again</button>");
 		}
+		if(triviaArray.length === 0){
+		empty();
+		$("#instructions").html("You answered " + wins + " out of " + originalTriviaArrayLength + " correctly!")
+	}
 	});
 }
 
@@ -96,9 +99,4 @@ $(document).ready(function(){
 		populateQuestion();
 		checkAnswer();
 	});
-
-	if(triviaArray.length === 0){
-		empty();
-		$("#instructions").html("You answered " + wins + " out of " + originalTriviaArrayLength + " correctly!")
-	}
 });
