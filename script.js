@@ -44,6 +44,14 @@ function decrement(){
 	$('#timer').html(number);
 	if(number === 0){
 		stop();
+		triviaArray.splice(artistIndex, 1);
+		empty();
+		$("#instructions").html("You've run out of time!");
+		$("#eventButton").html("<button class='button'>Next piece</button>")
+		if(triviaArray.length === 0){
+			empty();
+			$("#instructions").html("You answered " + wins + " out of " + originalTriviaArrayLength + " correctly!")
+		}
 	}
 }
 
@@ -68,6 +76,7 @@ function empty(){
 	$("#image").empty();
 	$("#answerChoices").empty();
 	$("#timer").empty();
+	$("#eventButton").empty();
 }
 
 function checkAnswer(){
@@ -75,28 +84,33 @@ function checkAnswer(){
 		var guessedName = $(this).text();
 		triviaArray.splice(artistIndex, 1); //removes artist so no duplicates
 		stop();
-		empty();
 		if (guessedName === targetArtist.name){
 			wins++;
-			$("#instructions").html("<p>Correct! On to the next art piece!</p><br><button class='button'>Next piece</button>");
+			$("#instructions").html("<p>Correct! On to the next art piece!</p><br>");
+			$("#eventButton").html("<button class='button'>Next piece</button>");
 			}
 		else{
-			$("#instructions").html("<p>Incorrect!</p><br><button class='button'>Try again</button>");
+			$("#instructions").html("<p>Incorrect!</p>");
+			$("#eventButton").html("<button class='button'>Next piece</button>");
 		}
 		if(triviaArray.length === 0){
-		empty();
-		$("#instructions").html("You answered " + wins + " out of " + originalTriviaArrayLength + " correctly!")
-	}
+			empty();
+			$("#instructions").html("You answered " + wins + " out of " + originalTriviaArrayLength + " correctly!")
+		}
 	});
 }
 
-
 $(document).ready(function(){
 	$("#mainText").html("<h1>Museum of Modern Art Trivia Game</h1>");
-	$("#instructions").html("<div id='initInstructions'>Test your framiliarity with 20th century modern artists.  A photo of the artwork and the name of the artwork will be provided, just match the name of the artist to his or her piece.  All pieces in this trivia game were selected from the permanent collection of the Museum of Modern Art (MoMA) in New York City.  Press the button below to get started.</div> <br><br><button class='button'>Begin</button>");
-
+	$("#instructions").html("<div id='instructions'>Test your framiliarity with 20th century modern artists.  A photo of the artwork and the name of the artwork will be provided, just match the name of the artist to his or her piece.  All pieces in this trivia game were selected from the permanent collection of the Museum of Modern Art (MoMA) in New York City.  Press the button below to get started.</div> <br><br><button class='button'>Begin</button>");
 	$(".button").on('click', function(){
 		populateQuestion();
 		checkAnswer();
 	});
+	$("#eventButton").on('click', function(){
+		empty();
+		populateQuestion();
+		checkAnswer();
+	});
+
 });
