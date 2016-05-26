@@ -31,7 +31,7 @@ var number = 10;
 
 var counter;
 
-function myTimer(){
+function questionTimer(){
 	counter = setInterval(decrement, 1000);
 }
 
@@ -44,8 +44,6 @@ function decrement(){
 	$('#timer').html(number);
 	if(number === 0){
 		stop();
-		empty();
-		$("#instructions").html("You've ran out of time!<br><button class='button'>Try again!</button>");
 	}
 }
 
@@ -57,11 +55,11 @@ function populateQuestion(){
 	//populate instructions/disply
 	$("#instructions").html("<p id='title'>" + targetArtist.title + "</p>");
 	$("#image").html("<img class=artImage src='" + targetArtist.img + "'>");
-	//set timer
+	//reset timer
 	number = 10;
 	//start timer
-	myTimer();
-	//display choices
+	questionTimer();
+	//display timer
 	for (var i = 0; i < targetArtist.choices.length; i++){
 		$("#answerChoices").append("<p class='choices'>" + targetArtist.choices[i] + "</p>");
 	}
@@ -81,10 +79,10 @@ function checkAnswer(){
 		empty();
 		if (guessedName === targetArtist.name){
 			wins++;
-			$("#instructions").html("Correct! On to the next art piece!");
+			$("#instructions").html("<p>Correct! On to the next art piece!</p><br><button class='button'>Next piece</button>");
 			}
 		else{
-			$("#instructions").html("Incorrect!<br><button class='button'>Try again</button>");
+			$("#instructions").html("<p>Incorrect!</p><br><button class='button'>Try again</button>");
 		}
 	});
 }
