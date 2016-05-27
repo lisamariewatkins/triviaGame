@@ -59,8 +59,8 @@ h1{
 	border-radius: 25px;
 }
 
-.options.hover{
-	color: red;
+.choices:hover{
+	font-weight: bold;
 }
 
 #instructions{
@@ -75,6 +75,10 @@ h1{
 
 #answerChoices{
 	text-align: center;
+}
+
+#paintingsLeft{
+	text-align: left;
 }
 
 .button {
