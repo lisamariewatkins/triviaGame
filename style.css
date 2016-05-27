@@ -1,11 +1,23 @@
+
+/*make hover for answer choices*/
+/*make a you can play again*/
+/*add number of unanswered*/
 *{
 	box-sizing: border-box;
+	text-align: center;
+	font-family: 'Source Sans Pro', sans-serif;
 }
 
 body{
 	background-image: url("bg.jpg");
   	background-size: cover;
 	margin: 0px;
+	font-size: 22px;
+}
+
+#logo{
+	height: 100px;
+	width: 100px;
 }
 
 h1{
@@ -47,6 +59,10 @@ h1{
 	border-radius: 25px;
 }
 
+.options.hover{
+	color: red;
+}
+
 #instructions{
 	text-align: center;
 }
@@ -78,10 +94,9 @@ h1{
    box-shadow: rgba(0,0,0,1) 0 1px 0;
    text-shadow: rgba(0,0,0,.4) 0 1px 0;
    color: white;
-   font-size: 19px;
-   font-family: Georgia, serif;
    text-decoration: none;
    vertical-align: middle;
+   font-size: 22px;
    }
 .button:hover {
    border-top-color: #28597a;
