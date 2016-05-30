@@ -2,21 +2,21 @@ var triviaArray = [{
 		name: "Mark Bradford",
 		description: "<strong>Mark Bradford</strong> created this piece in 2015.  He used torn pieces of paper, shellac, and oil on canvas.",
 		title: "Let's Walk to the Middle of the Ocean",
-		img: "mb.jpg",
+		img: "assets/images/mb.jpg",
 		choices: ["Jackson Pollack", "Georgia O'Keefe", "Pablo Picasso", "Mark Bradford"]
 	},
 	{
 		name: "Vincent Van Gogh",
 		description: "<strong>Vincent Van Gogh</strong> created this piece in 1889.  He used oil on canvas.",
 		title: "Starry Night",
-		img: "vg.jpg",
+		img: "assets/images/vg.jpg",
 		choices: ["Jackson Pollack", "Georgia O'Keefe", "Pablo Picasso", "Vincent Van Gogh"]
 	},
 	{
 		name: "Jackson Pollack",
 		description: "<strong>Jackson Pollock</strong> created this piece in 1950.  He used oil, enamel, and aluminum on canvas.",
 		title: "Number One",
-		img: "jp.jpg",
+		img: "assets/images/jp.jpg",
 		choices: ["Vincent Van Gogh", "Georgia O'Keefe", "Pablo Picasso", "Jackson Pollack"]
 	}
 ]
